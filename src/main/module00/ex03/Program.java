@@ -1,17 +1,55 @@
 import java.util.Scanner;
 import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Collections;
 // need to learn more about the buildins in JAVA
 
 
 class Main
 {
+    public static List<Integer> spliting(String input)
+    {
+        String[] arrStrings = input.split(" ");
+        if (arrStrings.length <= 0 || arrStrings.length == 0)
+        {
+            System.out.println("unexpected number of params 'may pass it empty'");
+            System.exit(1);
+        }
+
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0 ; i < arrStrings.length ;i++)
+        {
+            try 
+            {
+                int integer = Integer.parseInt(arrStrings[i].trim());
+                list.add(integer);
+            }
+            catch (NumberFormatException e) 
+            {
+
+            }
+            // toBeretu.addLast(integer);
+            
+        }
+        return list;
+    }
+
     public static void printer(LinkedList<String> input,int numberofWeeks)
     {
+        int y = 1 ;
         for (String line : input)
         {
-            int[] data = spliting(line);
-            // take the minimum and put the line
-            drawLine();
+            
+            List<Integer> data = spliting(line);
+            int yem = Collections.min(data);
+            System.out.print("Week "+ y + " ");
+            for (int i = 0 ; i < yem ;i++)
+            {
+                System.out.print("=");
+            }
+            System.out.print(">"+ "\n");
+            y++;
         }
     }
     public static boolean checkdigit(String data)
@@ -24,7 +62,6 @@ class Main
         }
         return true;
     }
-
     public static LinkedList<String> inputTaker(int nbr)
     {
         String[] holder = null;
@@ -33,9 +70,9 @@ class Main
         for (int i = 0 ; i < nbr ;i++)
         {
             Scanner sc = new Scanner(System.in);
-            System.out.print("Week" + (i+1) + "\n");
+            System.out.print("Week " + (i+1) + "\n  ");
             String data = sc.nextLine();
-            if (data.isEmpty) // check also is digit passed or not
+            if (data.isEmpty()) // check also is digit passed or not
             {
                 System.err.println("You can not enter invalid or empty data!");
                 return null;
@@ -46,7 +83,7 @@ class Main
             // hold up the data and split it into array of int
         }
 
-        System.out.print("this is the linedlist holded out \n"+ dgrees);
+        // System.out.println("this is the linedlist holded out " + dgrees);
         return dgrees;
     }
 
@@ -55,12 +92,16 @@ class Main
 
         // taking the input
         int numberofWeeks = 4;
-        LinkedList<String> input = inputTaker(numberofWeeks);
-        //  split every string and put the min number of egree in = to build line ====>
-        printer(input, numberofWeeks);
+        
+        try
+        {
+            LinkedList<String> input = inputTaker(numberofWeeks);
+            // take  the limit  inout from the user
+            printer(input, numberofWeeks);
+
+        }
+        catch (Exception e) {
+            System.out.println("Something else went wrong.");
+        }
     }
-
-
 }
-
-
