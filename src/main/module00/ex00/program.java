@@ -25,7 +25,6 @@ public class Main {
                 System.out.print("ins't valid sicuance of number\n");
                 return 0;
             }
-
         }
         return sum; // Return the result
     }
