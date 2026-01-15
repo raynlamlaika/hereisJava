@@ -1,5 +1,11 @@
-import java.lang.Enum;
+
+
 import java.util.Scanner;
+import annotations.ValidString;
+
+// import java.util.String;
+// import java.util.Character;
+
 
 // public class Main {
 //     enum Statusi {
@@ -8,7 +14,6 @@ import java.util.Scanner;
 //     EXPERT,
 //     PROFESSIONAL
 // }
-
 
 //     public static void main(String[] args) {
 //         // working with enum
@@ -85,3 +90,53 @@ public class Main {
 
 
 // anotations in java  
+
+
+class Creating
+{
+    public static void printing(@ValidString String he)
+    {
+        if (null == he)
+        {
+            System.out.print("empty string is passing\n");
+            return ;
+        }
+        System.out.print("printing: ");
+        for (int i = 0  ; he.length()  > i ; i++)
+        {
+            if (Character.isLowerCase(he.charAt(i)))
+                System.out.print(he.charAt(i));
+            else
+                System.out.print(".");
+        }
+        System.out.print('\n');
+    }
+}
+
+
+// check why we can creat in mualtiple public classes in same file!!
+class Pushing extends Creating
+{
+    // @overwrite
+    public static void printing( String he)
+    {
+        
+        if (null == he)
+        {
+            System.out.print("empty string is passing\n");
+
+        }
+        for (int i = 0  ; he.length()  > i ; i++)
+        {
+            if (Character.isUpperCase(he.charAt(i)))
+                System.out.print(he.charAt(i));
+            else
+                System.out.print(".");
+        }
+        System.out.print('\n');
+    }
+}
+
+
+
+
