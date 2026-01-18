@@ -39,7 +39,7 @@ public class Client
 
         try
         {
-            socket = new Socket("34.230.40.69", 30000);
+            socket = new Socket("localhost", 9099);
 
 
             // in stream reader
